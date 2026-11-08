@@ -44,6 +44,54 @@
   .table td:first-child { white-space: nowrap; font-weight: 600; color: var(--gold); }
   .two { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
   .note { color: var(--muted); font-size: 15px; }
+  .intro { font-size: 18.5px; margin: 0 0 22px; max-width: 760px; }
+  .need { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--gold); border-radius: 10px; padding: 16px 18px; margin: 0 0 26px; }
+  .need h3 { margin: 0 0 6px; font-size: 20px; }
+  .need ul { margin: 0; padding-left: 20px; }
+  .steps li > b { font-size: 20px; line-height: 1.3; margin: 3px 0 8px; }
+  .steps ul.sub { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; counter-reset: none; }
+  .steps ul.sub li { background: none; border: 0; padding: 0 0 0 22px; border-radius: 0; counter-increment: none; }
+  .steps ul.sub li::before { content: "›"; left: 3px; top: -1px; width: auto; height: auto; background: none; color: var(--gold); font-size: 20px; }
+  .steps .btn { margin: 12px 0 2px; }
+  kbd { background: #e8ecf2; color: #17130a; border-radius: 4px; border-bottom: 3px solid #9aa5b4; padding: 1px 7px; font: 700 14.5px/1.5 system-ui, sans-serif; white-space: nowrap; }
+  .tip, .warn, .alt-path { border-radius: 8px; padding: 11px 14px; margin-top: 12px; font-size: 16px; }
+  .tip { background: rgba(74,184,255,.1); border: 1px solid rgba(74,184,255,.35); }
+  .warn { background: rgba(255,95,86,.1); border: 1px solid rgba(255,95,86,.4); }
+  .alt-path { background: var(--panel2); border: 1px solid var(--line); }
+  .tip b, .warn b, .alt-path b { display: inline; }
+  .copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; background: var(--panel2); border: 1px dashed var(--line); border-radius: 8px; padding: 11px 13px; margin-top: 10px; }
+  .copy-row code { background: none; border: 0; padding: 0; font-size: 17px; color: var(--gold); flex: 1 1 200px; }
+  .copy { background: var(--blue); color: #06202f; border: 0; border-radius: 6px; font: 700 15px system-ui, sans-serif; padding: 8px 14px; min-height: 40px; cursor: pointer; }
+  .shot { margin-top: 14px; max-width: 460px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #2b2f36; font-size: 14.5px; }
+  .shot .bar { background: #3a4049; color: var(--muted); padding: 5px 11px; font-size: 13px; }
+  .shot .body { padding: 13px; display: grid; gap: 8px; }
+  .shot .row { display: flex; align-items: center; gap: 8px; }
+  .shot .dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--muted); flex: none; }
+  .shot .on { border-color: var(--gold); background: radial-gradient(var(--gold) 45%, transparent 50%); }
+  .shot .pick { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+  .shot .fake { background: #15181d; border: 1px solid #5a6270; padding: 5px 9px; color: var(--text); flex: 1; overflow-wrap: anywhere; }
+  .shot .label { color: var(--muted); font-size: 13px; margin-bottom: -5px; }
+  .shot .b { background: #6c7380; color: #fff; padding: 6px 13px; text-align: center; }
+  .shot .green { background: #27843a; font-weight: 800; padding: 9px 28px; }
+  .shot .mc { background: #1b2a1a; }
+  .shot figcaption, figcaption { color: var(--muted); font-size: 13.5px; padding: 7px 12px 9px; border-top: 1px solid var(--line); }
+  figure { margin: 0; }
+  .keys { width: 100%; border-collapse: collapse; }
+  .keys td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .keys td:first-child { white-space: nowrap; }
+  .faq details { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 10px; }
+  .faq summary { cursor: pointer; font-weight: 700; padding: 14px 16px; min-height: 48px; }
+  .faq details > div { padding: 0 16px 15px; }
+  .faq p { margin: 0 0 8px; }
+  .firsts { margin: 0; padding-left: 24px; display: grid; gap: 9px; }
+  @media (max-width: 560px) {
+    .steps li { padding: 62px 15px 16px; }
+    .steps ul.sub li { padding: 0 0 0 22px; }
+    .steps li::before { left: 15px; top: 15px; }
+    .steps ul.sub li::before { left: 3px; top: -1px; }
+    .keys td:first-child, .table td:first-child { white-space: normal; }
+    .wrap { padding: 0 16px; }
+  }
   footer { margin-top: 64px; padding: 26px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 </style>
 </head>
@@ -53,22 +101,157 @@
   <div class="wrap">
     <h1>Mega <span>Monde</span></h1>
     <p class="lead">Le monde entier est une ville. Trouve un métier, gagne ta vie, achète ta maison, ta voiture et tes magasins. Et évite la police.</p>
-    <a class="btn" href="telecharger/megamonde-1.0.0.jar" download>Télécharger le mod (1 Mo)</a>
-    <a class="btn alt" href="#rejoindre">Comment jouer</a>
+    <a class="btn" href="#rejoindre">Je débute : suivre le guide</a>
+    <a class="btn alt" href="telecharger/megamonde-1.0.0.jar" download>Télécharger seulement le mod</a>
   </div>
 </header>
 
 <main class="wrap">
 
   <section id="rejoindre">
-    <h2>Rejoindre le serveur</h2>
+    <h2>Installer le mod et rejoindre le serveur</h2>
+    <p class="intro">Jamais joué à Minecraft ? Aucun problème. Fais les étapes dans l'ordre, sans en sauter. Ce n'est à faire qu'une seule fois.</p>
+
+    <div class="need">
+      <h3>Avant de commencer, il te faut</h3>
+      <ul>
+        <li>Un <b style="display:inline">ordinateur</b>. Ce guide est écrit pour Windows. Téléphone, tablette et console ne peuvent pas rejoindre le serveur.</li>
+        <li><b style="display:inline">Minecraft Java Edition</b>. Le nom est écrit dans le launcher, l'application qui lance le jeu. La version « Bedrock » ne marche pas ici.</li>
+        <li>Pas de compte Minecraft officiel ? Le serveur t'accepte quand même : suis les encadrés « Sans compte officiel ».</li>
+      </ul>
+    </div>
+
     <ol class="steps">
-      <li><b>Installe Forge pour Minecraft 1.20.1</b>Prends la version 47.4.0 sur <a href="https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html" rel="noopener">le site officiel de Forge</a>, puis lance le jeu une fois avec. Le serveur accepte aussi les joueurs sans compte officiel.</li>
-      <li><b>Ajoute le mod</b><a href="telecharger/megamonde-1.0.0.jar" download>Télécharge megamonde-1.0.0.jar</a> et mets-le dans ton dossier <code>mods</code>. Sous Windows : touches Windows + R, puis <code>%appdata%\.minecraft\mods</code>.</li>
-      <li><b>Connecte-toi au serveur</b>Multijoueur &gt; Ajouter un serveur, puis entre l'adresse.
-        <div class="address">Adresse du serveur : <code>chords-simmering.tun.ply.gg</code></div></li>
-      <li><b>Protège ton pseudo</b>À ta première venue, appuie sur T et tape <code>/register monmotdepasse monmotdepasse</code>. Les fois suivantes : <code>/login monmotdepasse</code>. Choisis un mot de passe que tu n'utilises nulle part ailleurs.</li>
+      <li><b>Ouvre ton launcher Minecraft, puis ferme-le</b>
+        Ouvre-le une fois pour qu'il prépare ses dossiers sur ton ordinateur. Tu n'as pas besoin de lancer le jeu.
+      </li>
+
+      <li><b>Télécharge Forge</b>
+        Forge est le programme gratuit qui permet à Minecraft d'utiliser des mods. Il faut exactement cette version :<br>
+        <a class="btn" href="https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.4.0/forge-1.20.1-47.4.0-installer.jar" rel="noopener">Télécharger Forge 1.20.1</a>
+        <div class="tip">Si ton navigateur demande s'il faut garder le fichier, choisis <b>Conserver</b>. Le fichier arrive dans ton dossier <b>Téléchargements</b>.</div>
+        <div class="alt-path"><b>Sans compte officiel :</b> pas besoin de ce fichier. Dans la liste des versions de ton launcher, choisis <b>Forge 1.20.1</b>, installe-la, puis passe directement à l'étape 4.</div>
+      </li>
+
+      <li><b>Installe Forge</b>
+        <ul class="sub">
+          <li>Va dans <b style="display:inline">Téléchargements</b> et double-clique sur le fichier <code>forge-1.20.1-47.4.0-installer</code>.</li>
+          <li>Une petite fenêtre s'ouvre. Vérifie que <b style="display:inline">Install client</b> est coché, puis clique sur <b style="display:inline">OK</b>.</li>
+          <li>Attends le message de réussite, puis clique encore sur <b style="display:inline">OK</b>.</li>
+        </ul>
+        <figure class="shot">
+          <div class="bar">Mod system installer</div>
+          <div class="body">
+            <div class="row"><span class="dot on"></span><span class="pick">Install client</span></div>
+            <div class="row"><span class="dot"></span>Install server</div>
+            <div class="row"><span class="dot"></span>Extract</div>
+            <div class="row"><span class="b pick">OK</span><span class="b">Cancel</span></div>
+          </div>
+          <figcaption>Schéma de la fenêtre : coche la première ligne, puis OK.</figcaption>
+        </figure>
+        <div class="warn"><b>Rien ne s'ouvre, ou le fichier s'ouvre comme une archive ?</b> Il manque Java. <a href="https://adoptium.net/temurin/releases/?version=17&amp;os=windows" rel="noopener">Installe Java 17</a> : prends le fichier <b>.msi</b> pour Windows x64, lance-le et clique sur Suivant jusqu'à la fin. Refais ensuite un double-clic sur le fichier Forge.</div>
+      </li>
+
+      <li><b>Lance le jeu une fois avec Forge</b>
+        <ul class="sub">
+          <li>Ouvre le launcher. En bas à gauche, à côté du bouton vert, clique sur la version et choisis <b style="display:inline">forge</b>.</li>
+          <li>Clique sur <b style="display:inline">JOUER</b>. Si le launcher t'avertit à propos des mods, confirme.</li>
+          <li>Le premier démarrage est long, parfois plusieurs minutes. C'est normal, ne ferme rien.</li>
+          <li>Quand le menu du jeu apparaît, clique sur <b style="display:inline">Quitter le jeu</b>. Cette étape a créé le dossier où ranger le mod.</li>
+        </ul>
+        <figure class="shot">
+          <div class="body mc">
+            <div class="row"><span class="fake pick">forge<br><small>1.20.1-forge-47.4.0</small></span><span class="b green">JOUER</span></div>
+          </div>
+          <figcaption>Schéma du bas du launcher : « forge » doit être sélectionné.</figcaption>
+        </figure>
+      </li>
+
+      <li><b>Télécharge le mod et range-le</b>
+        <a class="btn" href="telecharger/megamonde-1.0.0.jar" download>Télécharger le mod Mega Monde</a>
+        <div class="warn"><b>Ne double-clique pas sur ce fichier.</b> Il ne s'installe pas tout seul : il suffit de le déplacer.</div>
+        <ul class="sub">
+          <li>Appuie en même temps sur <kbd>Windows</kbd> + <kbd>R</kbd>. Une petite fenêtre s'ouvre en bas à gauche.</li>
+          <li>Copie ceci, colle-le dans cette fenêtre, puis appuie sur <kbd>Entrée</kbd> :
+            <div class="copy-row"><code>%appdata%\.minecraft\mods</code><button class="copy" type="button">Copier</button></div></li>
+          <li>Le dossier <b style="display:inline">mods</b> s'ouvre. Fais glisser <code>megamonde-1.0.0.jar</code> depuis Téléchargements jusque dedans.</li>
+        </ul>
+        <div class="alt-path"><b>Sans compte officiel :</b> ton launcher peut utiliser un autre dossier. Cherche dans ses réglages un bouton du genre « Ouvrir le dossier du jeu », puis ouvre le dossier <b>mods</b> de ta version Forge.</div>
+      </li>
+
+      <li><b>Relance le jeu et vérifie le mod</b>
+        Ouvre le launcher, garde <b style="display:inline">forge</b> sélectionné et clique sur <b style="display:inline">JOUER</b>. Dans le menu du jeu, clique sur <b style="display:inline">Mods</b> : <b style="display:inline">Mega Monde</b> doit être dans la liste. Clique ensuite sur Terminé.
+      </li>
+
+      <li><b>Ajoute le serveur</b>
+        <ul class="sub">
+          <li>Clique sur <b style="display:inline">Multijoueur</b>. Si un message d'avertissement s'affiche, clique sur Continuer.</li>
+          <li>Clique sur <b style="display:inline">Ajouter un serveur</b>.</li>
+          <li>Dans <b style="display:inline">Nom du serveur</b>, écris ce que tu veux, par exemple Mega Monde.</li>
+          <li>Dans <b style="display:inline">Adresse du serveur</b>, colle cette adresse, puis clique sur <b style="display:inline">Terminé</b> :
+            <div class="copy-row"><code>chords-simmering.tun.ply.gg</code><button class="copy" type="button">Copier</button></div></li>
+          <li>Double-clique sur le serveur dans la liste pour entrer.</li>
+        </ul>
+        <figure class="shot">
+          <div class="body">
+            <div class="label">Nom du serveur</div><div class="fake">Mega Monde</div>
+            <div class="label">Adresse du serveur</div><div class="fake pick">chords-simmering.tun.ply.gg</div>
+            <div class="b">Terminé</div>
+          </div>
+          <figcaption>Schéma de l'écran « Ajouter un serveur ».</figcaption>
+        </figure>
+      </li>
+
+      <li><b>Crée ton mot de passe, dans les 90 secondes</b>
+        Ton personnage reste bloqué tant que le mot de passe n'est pas donné. C'est normal : il empêche les autres de prendre ton pseudo, ton argent et ta maison.
+        <ul class="sub">
+          <li>Appuie sur <kbd>T</kbd> pour ouvrir le chat.</li>
+          <li>Écris <code>/register</code>, un espace, ton mot de passe, un espace, puis encore ton mot de passe. Exemple avec le mot de passe <code>soleil42</code> :
+            <div class="copy-row"><code>/register soleil42 soleil42</code></div></li>
+          <li>Appuie sur <kbd>Entrée</kbd>. Le message « Compte créé » confirme que c'est bon.</li>
+        </ul>
+        <div class="tip">Sur un clavier français, la barre <code>/</code> se fait avec <kbd>Maj</kbd> + <kbd>:</kbd>. Ton mot de passe doit faire au moins 4 caractères, sans espace.</div>
+        <div class="warn"><b>Invente un mot de passe que tu n'utilises nulle part ailleurs</b>, et pas celui de l'exemple.</div>
+        <div class="alt-path"><b>Les fois suivantes :</b> va dans Multijoueur, double-clique sur le serveur, appuie sur <kbd>T</kbd> et écris <code>/login tonmotdepasse</code>.</div>
+      </li>
     </ol>
+  </section>
+
+  <section id="debut">
+    <h2>Tes premières minutes en jeu</h2>
+    <div class="two">
+      <div>
+        <table class="keys">
+          <tr><td><kbd>Z</kbd> <kbd>Q</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Avancer, gauche, reculer, droite</td></tr>
+          <tr><td>Souris</td><td>Regarder autour de toi</td></tr>
+          <tr><td><kbd>Espace</kbd></td><td>Sauter</td></tr>
+          <tr><td>Molette</td><td>Changer l'objet que tu tiens</td></tr>
+          <tr><td><kbd>E</kbd></td><td>Ouvrir ton inventaire</td></tr>
+          <tr><td>Clic droit</td><td>Utiliser l'objet, ouvrir ou acheter</td></tr>
+          <tr><td><kbd>T</kbd></td><td>Écrire dans le chat</td></tr>
+          <tr><td><kbd>Échap</kbd></td><td>Menu du jeu, et se déconnecter</td></tr>
+        </table>
+      </div>
+      <ol class="firsts">
+        <li><b>Prends ton téléphone en main</b> avec la molette, puis fais un clic droit. Il revient toujours, même si tu meurs. Perdu ? Tape <code>/telephone</code>.</li>
+        <li><b>Choisis un métier</b> : téléphone, puis « Choisir un métier ».</li>
+        <li><b>Travaille</b>. La flèche GPS en haut de l'écran et la mini-carte t'indiquent où aller. La paie tombe toutes les 2 minutes.</li>
+        <li><b>Achète une voiture</b> : téléphone, « Trouver un lieu », concession. Fais un clic droit sur le sol pour la poser, puis un clic droit dessus pour monter.</li>
+        <li><b>Achète ta maison</b> à l'agence immobilière, trouvable depuis le même menu.</li>
+        <li><b>Attention :</b> si tu tues quelqu'un, la police te poursuit.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="aide" class="faq">
+    <h2>Ça ne marche pas ?</h2>
+    <details><summary>« forge » n'apparaît pas dans le launcher</summary><div><p>Ferme complètement le launcher puis rouvre-le. Si rien ne change, refais l'étape 3 : l'installation n'est pas allée jusqu'au bout.</p></div></details>
+    <details><summary>Le jeu parle de mods manquants ou incompatibles</summary><div><p>Tu as lancé le jeu sans Forge, ou le mod n'est pas dans le bon dossier. Refais les étapes 4, 5 et 6, et vérifie que « forge » est bien sélectionné avant de cliquer sur JOUER.</p></div></details>
+    <details><summary>Impossible de se connecter, ou « Connection timed out »</summary><div><p>Vérifie l'adresse, sans espace avant ou après. Si elle est bonne, le serveur est sans doute éteint : il tourne sur l'ordinateur de l'organisateur. Réessaie plus tard ou préviens-le.</p></div></details>
+    <details><summary>J'ai été éjecté juste après être arrivé</summary><div><p>Tu as dépassé les 90 secondes sans donner ton mot de passe. Reviens sur le serveur et tape la commande tout de suite (étape 8).</p></div></details>
+    <details><summary>« Ce pseudo a déjà un mot de passe »</summary><div><p>Ce pseudo est déjà pris. Si c'est le tien, utilise <code>/login tonmotdepasse</code>. Sinon, choisis un autre pseudo dans ton launcher.</p></div></details>
+    <details><summary>J'ai oublié mon mot de passe</summary><div><p>Demande à l'organisateur du serveur de l'effacer. Tu pourras ensuite en choisir un nouveau avec <code>/register</code>, et tu gardes ta partie.</p></div></details>
+    <details><summary>Je veux changer de mot de passe</summary><div><p>Une fois connecté, tape <code>/motdepasse ancien nouveau</code>.</p></div></details>
   </section>
 
   <section>
@@ -114,5 +297,16 @@
   <div class="wrap">Mega Monde est un mod de fans. Il n'est ni affilié à Mojang ni à Microsoft, ni approuvé par eux. Minecraft est une marque de Mojang AB.</div>
 </footer>
 
+<script>
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.parentNode.querySelector('code').textContent;
+      function done() { b.textContent = 'Copié !'; setTimeout(function () { b.textContent = 'Copier'; }, 1800); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { window.prompt('Copie ce texte :', text); });
+      } else { window.prompt('Copie ce texte :', text); }
+    });
+  });
+</script>
 </body>
 </html>
