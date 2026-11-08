@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mega Monde</title>
+<meta name="description" content="Un mod Minecraft où le monde entier est une ville : métiers, argent, maisons, voitures, police. Rejoins le serveur.">
+<style>
+  :root {
+    --bg: #0e1116; --panel: #171c24; --panel2: #1f2631; --line: #2c3543;
+    --text: #e8ecf2; --muted: #9aa5b4; --gold: #ffcf40; --blue: #4ab8ff; --red: #ff5f56;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 system-ui, "Segoe UI", Roboto, sans-serif; }
+  img { display: block; width: 100%; height: auto; }
+  a { color: var(--blue); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  header.hero { position: relative; min-height: 78vh; display: flex; align-items: flex-end; background: #000 url(images/ville.png) center/cover no-repeat; image-rendering: pixelated; }
+  header.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,17,22,.15) 0%, rgba(14,17,22,.55) 55%, var(--bg) 100%); }
+  .hero .wrap { position: relative; z-index: 1; padding-bottom: 56px; width: 100%; image-rendering: auto; }
+  h1 { font-size: clamp(46px, 10vw, 92px); line-height: 1; margin: 0 0 12px; letter-spacing: -.02em; }
+  h1 span { color: var(--gold); }
+  .lead { font-size: clamp(18px, 2.6vw, 23px); max-width: 640px; margin: 0 0 26px; }
+  .btn { display: inline-block; background: var(--gold); color: #17130a; font-weight: 700; text-decoration: none; padding: 15px 26px; border-radius: 8px; margin: 0 10px 10px 0; }
+  .btn.alt { background: rgba(255,255,255,.12); color: var(--text); }
+  .btn:hover { filter: brightness(1.08); }
+  section { padding: 56px 0 8px; }
+  h2 { font-size: 32px; line-height: 1.2; margin: 0 0 22px; }
+  .steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .steps li { counter-increment: s; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 18px 18px 66px; position: relative; }
+  .steps li::before { content: counter(s); position: absolute; left: 18px; top: 16px; width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: #17130a; font-weight: 800; display: grid; place-items: center; }
+  .steps b { display: block; }
+  code { background: var(--panel2); border: 1px solid var(--line); padding: 2px 7px; border-radius: 5px; font: 15px/1.5 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+  .address { background: var(--panel2); border: 1px dashed var(--line); border-radius: 8px; padding: 12px 14px; margin-top: 10px; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .card img { aspect-ratio: 16/9; object-fit: cover; image-rendering: pixelated; }
+  .card div { padding: 14px 16px 16px; }
+  .card h3 { margin: 0 0 4px; font-size: 19px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .table { width: 100%; border-collapse: collapse; font-size: 16px; }
+  .table td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .table td:first-child { white-space: nowrap; font-weight: 600; color: var(--gold); }
+  .two { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .note { color: var(--muted); font-size: 15px; }
+  footer { margin-top: 64px; padding: 26px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Mega <span>Monde</span></h1>
+    <p class="lead">Le monde entier est une ville. Trouve un métier, gagne ta vie, achète ta maison, ta voiture et tes magasins. Et évite la police.</p>
+    <a class="btn" href="telecharger/megamonde-1.0.0.jar" download>Télécharger le mod (1 Mo)</a>
+    <a class="btn alt" href="#rejoindre">Comment jouer</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="rejoindre">
+    <h2>Rejoindre le serveur</h2>
+    <ol class="steps">
+      <li><b>Installe Forge pour Minecraft 1.20.1</b>Prends la version 47.4.0 sur <a href="https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html" rel="noopener">le site officiel de Forge</a>, puis lance le jeu une fois avec. Le serveur accepte aussi les joueurs sans compte officiel.</li>
+      <li><b>Ajoute le mod</b><a href="telecharger/megamonde-1.0.0.jar" download>Télécharge megamonde-1.0.0.jar</a> et mets-le dans ton dossier <code>mods</code>. Sous Windows : touches Windows + R, puis <code>%appdata%\.minecraft\mods</code>.</li>
+      <li><b>Connecte-toi au serveur</b>Multijoueur &gt; Ajouter un serveur, puis entre l'adresse.
+        <div class="address">Adresse du serveur : demande-la à l'organisateur.</div></li>
+      <li><b>Protège ton pseudo</b>À ta première venue, appuie sur T et tape <code>/register monmotdepasse monmotdepasse</code>. Les fois suivantes : <code>/login monmotdepasse</code>. Choisis un mot de passe que tu n'utilises nulle part ailleurs.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Ce qui t'attend</h2>
+    <div class="grid">
+      <article class="card"><img src="images/chateau.png" alt="Vue aérienne d'un château au milieu de la ville" loading="lazy"><div><h3>Une ville sans fin</h3><p>Gratte-ciel, quartiers, villages, châteaux, bases militaires et donjons.</p></div></article>
+      <article class="card"><img src="images/concession.png" alt="Menu de la concession automobile avec les prix des voitures" loading="lazy"><div><h3>Métiers et argent</h3><p>Livreur, taxi, policier, mineur, agriculteur, bûcheron. Achète des magasins, crée ton entreprise, roule en Supercar.</p></div></article>
+      <article class="card"><img src="images/appartement.png" alt="Salon d'un appartement avec canapé et télévision" loading="lazy"><div><h3>Ta maison, rien qu'à toi</h3><p>Passe voir un agent immobilier. Personne d'autre ne peut l'acheter, y entrer par la porte ou y toucher.</p></div></article>
+      <article class="card"><img src="images/police.png" alt="Voiture de police dans la rue, trois étoiles de recherche à l'écran" loading="lazy"><div><h3>La police te traque</h3><p>Tue quelqu'un et les étoiles tombent. Sirènes, voitures, renforts. À toi de les semer.</p></div></article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Commandes</h2>
+    <div class="two">
+      <div>
+        <table class="table">
+          <tr><td>Clic droit</td><td>Tirer, utiliser, ouvrir le téléphone</td></tr>
+          <tr><td>R</td><td>Recharger</td></tr>
+          <tr><td>Accroupi</td><td>Viser</td></tr>
+          <tr><td>Z Q S D</td><td>Conduire</td></tr>
+          <tr><td>H</td><td>Klaxon</td></tr>
+          <tr><td>Maj</td><td>Descendre de voiture</td></tr>
+          <tr><td>M</td><td>Zoom de la minicarte</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="table">
+          <tr><td>Manette Xbox</td><td>Rien à régler, branche-la</td></tr>
+          <tr><td>RT / LT</td><td>Tirer et viser. En voiture : gaz et frein</td></tr>
+          <tr><td>A / B</td><td>Sauter, s'accroupir, descendre</td></tr>
+          <tr><td>X / Y</td><td>Recharger, inventaire</td></tr>
+          <tr><td>View</td><td>Téléphone</td></tr>
+        </table>
+        <p class="note">Les commandes du chat : <code>/argent</code>, <code>/payer pseudo montant</code>, <code>/telephone</code>, <code>/motdepasse ancien nouveau</code>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Mega Monde est un mod de fans. Il n'est ni affilié à Mojang ni à Microsoft, ni approuvé par eux. Minecraft est une marque de Mojang AB.</div>
+</footer>
+
+</body>
+</html>
